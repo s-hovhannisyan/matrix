@@ -31,13 +31,13 @@ const draw = () => {
   context.fillStyle = "#0F0";
   context.font = fontSize + "px monospace";
 
-  for (let i = 0; i < rainDrops.length; i++) {
+  for (let i = rainDrops.length; i > 0; i--) {
     const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-    context.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+    context.fillText(text, i * fontSize, rainDrops[i] * fontSize + height);
     if (Math.random() > 0.975 || rainDrops[i] * fontSize > canvas.height) {
       rainDrops[i] = 0;
     }
-    rainDrops[i]++;
+    rainDrops[i]--;
   }
 };
 
