@@ -1,1 +1,53 @@
-Hello World
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+        }
+      #canvas {
+        width: 100vw;
+        height: 100vh;
+        }
+    </style>
+    <script>
+
+var w, h;
+var c = document.querySelector("#canvas");
+c.width = w = 600;
+c.height = h = 200;
+var ctx = c.getContext("2d");
+ctx.fillColor = "#000"; 
+ctx.fillRect(0, 0, w, h);
+var content = "abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ0123456789";
+var contentLength = content.length;
+var position = [];
+for (var i = 0; i < contentLength; i++) {
+ position[i] = 0;
+}
+setInterval(() => {
+ ctx.font = "10px Arial";
+ ctx.fillStyle = "#0f0";
+ var rndPos = Math.floor(Math.random() * contentLength);
+ var rndChr = content[rndPos];
+ var posX = rndPos * 10;
+ var posY = position[rndPos];
+ position[rndPos] += 10;
+ if (position[rndPos] > h) {
+  position[rndPos] = 0;
+  ctx.fillStyle = "#0008";
+  ctx.fillRect(posX, 0, 10, h);
+ }
+ rndPos = Math.floor(Math.random() * contentLength);
+ ctx.fillText(content[rndPos], posX, posY);
+}, 1);
+
+    </script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+  </body>
+</html>
