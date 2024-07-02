@@ -1,1 +1,1 @@
-[sargis.am](https://sargis.am/).
+[sargis.am](https://sargis.am/)
